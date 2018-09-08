@@ -15,9 +15,8 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
          their colleagues and Xianying Chen.
 """  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
+import builtins
 import math
-import builtins  # Never necessary, but here for pedagogical reasons
-
 
 # ----------------------------------------------------------------------
 # Students: As you work each of these problems, ask yourself:
@@ -212,7 +211,7 @@ def factorial(n):
 def run_test_count_cosines_from():
     """ Tests the   count_cosines_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # Done: 6. Implement this TEST function.
     #   It TESTS the  count_cosines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -278,7 +277,7 @@ def run_test_count_cosines_from():
     # Test 6:
     answer_from_by_hand = 3
     answer_from_my_code = count_cosines_from(3, 9, 0.27)
-    print('Test 6 expected (from oracle):', answer_from_oracle)
+    print('Test 6 expected (from oracle):', answer_from_by_hand)
     print('       actual (from my code): ', answer_from_my_code)
 
 
@@ -302,7 +301,7 @@ def count_cosines_from(m, n, x):
       -- count_cosines_from(4, 8, -0.5)  returns  4
     """
     # ------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -310,11 +309,20 @@ def count_cosines_from(m, n, x):
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
 
+    count = 0
+
+    for i in range(n-m+1):
+        # print(i)
+        value = math.cos(m+i)
+        if value > x:
+            count = count + 1
+    return count
+
 
 def run_test_sum_unit_fractions_from():
     """ Tests the   sum_unit_fractions_from   function. """
     # ------------------------------------------------------------------
-    # TODO: 8. Implement this TEST function.
+    # DONE: 8. Implement this TEST function.
     #   It TESTS the  sum_unit_fractions_from  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     # Use the same 4-step process as for previous TEST functions.
@@ -335,6 +343,18 @@ def run_test_sum_unit_fractions_from():
     # Below this comment, add 2 more test cases of your own choosing.
     # ------------------------------------------------------------------
 
+    # Test 2:
+    expected = 6.853  # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(10, 9000)
+    print('Test 2 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 0.745635   # This is APPROXIMATELY the correct answer.
+    answer = sum_unit_fractions_from(5, 9)
+    print('Test 3 expected:', expected, '(approximately)')
+    print('       actual:  ', answer)
+
 
 def sum_unit_fractions_from(m, n):
     """
@@ -349,7 +369,7 @@ def sum_unit_fractions_from(m, n):
       -- sum_unit_fractions_from(10, 9000)  returns about  6.853
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function.
+    # DONE: 9. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
@@ -357,8 +377,14 @@ def sum_unit_fractions_from(m, n):
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
 
+    value = 0
+    for i in range(n-m+1):
+        value = value + (1/(m+i))
+    return value
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
+
+
 main()
