@@ -12,8 +12,8 @@ in its "in graphics" form:
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Xianying Chen.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import builtins  # Never necessary, but here for pedagogical reasons
@@ -90,7 +90,7 @@ def run_test_sum_from():
     print('       actual (from my code):  ', answer_from_my_code)
 
 # ----------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #   When you have READ the above  run_test_sum_from  function,
 #   asking questions as needed, and you feel that you (mostly, at least)
 #   understand it, and you feel that you understand from the example:
@@ -114,7 +114,7 @@ def sum_from(m, n):
         sum_from(6, 9) returns 6 + 7 + 8 + 9, that is, 30.
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # IMPORTANT:  Your solution MUST
@@ -124,12 +124,17 @@ def sum_from(m, n):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+    if m <= n:
+        total = 0
+        for i in range(n-m+1):
+            total = total + (m+i)
+        return total
 
 
 def run_test_factorial():
     """ Tests the   factorial   function. """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  factorial  function defined below.
     #   Include at least **   5   ** tests (we wrote two for you).
     #
@@ -162,6 +167,24 @@ def run_test_factorial():
     #   ** uses  math.factorial  as an ORACLE for testing. **
     # ------------------------------------------------------------------
 
+    # Test 3:
+    answer_from_oracle = math.factorial(10)
+    answer_from_my_code = factorial(10)
+    print('Test 3 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 4:
+    answer_from_oracle = math.factorial(35)
+    answer_from_my_code = factorial(35)
+    print('Test 4 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 5:
+    answer_from_by_hand = 120
+    answer_from_my_code = factorial(5)
+    print('Test 5 expected (from oracle):', answer_from_by_hand)
+    print('       actual (from my code): ', answer_from_my_code)
+
 
 def factorial(n):
     """
@@ -173,12 +196,17 @@ def factorial(n):
         factorial(0) returns 1 (by definition).
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT:  Your solution MUST
     #   use an explicit    for ... in range(...):     statement.
     # ------------------------------------------------------------------
+    if n >= 0:
+        x = 1
+        for i in range(n-1):
+            x = x * (n-i)
+        return x
 
 
 def run_test_count_cosines_from():
@@ -222,6 +250,36 @@ def run_test_count_cosines_from():
     # TO DO: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # ------------------------------------------------------------------
+
+    # Test 2:
+    answer_from_by_hand = 1
+    answer_from_my_code = count_cosines_from(3, 5, 0)
+    print('Test 2 expected (from oracle):', answer_from_by_hand)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 3:
+    answer_from_by_hand = 3
+    answer_from_my_code = count_cosines_from(4, 9, 0)
+    print('Test 3 expected (from oracle):', answer_from_by_hand)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 4:
+    answer_from_by_hand = 2
+    answer_from_my_code = count_cosines_from(3, 6, 0.1)
+    print('Test 4 expected (from oracle):', answer_from_by_hand)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 5:
+    answer_from_by_hand = 4
+    answer_from_my_code = count_cosines_from(4, 8, -0.5)
+    print('Test 5 expected (from oracle):', answer_from_by_hand)
+    print('       actual (from my code): ', answer_from_my_code)
+
+    # Test 6:
+    answer_from_by_hand = 3
+    answer_from_my_code = count_cosines_from(3, 9, 0.27)
+    print('Test 6 expected (from oracle):', answer_from_oracle)
+    print('       actual (from my code): ', answer_from_my_code)
 
 
 def count_cosines_from(m, n, x):
